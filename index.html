@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es"> <!--begin::Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Bon Area | Login Page</title><!--begin::Primary Meta Tags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="AdminLTE 4 | Login Page">
+    <meta name="author" content="ColorlibHQ">
+    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
+    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/adminlte.css"><!--end::Required Plugin(AdminLTE)-->
+</head> <!--end::Head--> <!--begin::Body-->
+<style>
+    body.login-page {
+        background-image: url('/assets/img/photo4.jpg'); /* Reemplaza con la ruta de tu imagen */
+        background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* No repite la imagen */
+    }
+</style>
+
+<body class="login-page bg-body-secondary">
+    <div class="login-box">
+        <div class="login-logo"> 
+            <img src="/assets/img/AdminLTEFullLogo.png" alt="Logo" style="display: block; margin: 0 auto; max-width: 100%; height: auto;">
+            <a href=""><b>BON</b>Area</a> 
+        </div> <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Iniciar Sesion </p>
+                <form id="loginForm" method="post">
+                    <div class="input-group mb-3"> <input id="username" type="email" class="form-control" placeholder="Email">
+                        <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
+                    </div>
+                    <div class="input-group mb-3"> <input id="password" type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
+                    </div> <!--begin::Row-->
+                        <div class="col-8">
+                            <div class="form-check"> 
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label> 
+                            </div>
+                        </div> <!-- /.col -->
+                        <div class="col-12 text-center">
+                            
+                            <button type="submit" class="btn btn-primary" id="loginButton">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                                Sign In
+                            </button> 
+                        </div> <!-- /.col -->
+                    </div> <!--end::Row-->
+                </form>
+            </div> <!-- /.login-card-body -->
+        </div>
+    </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+
+    <!-- Para el toast-->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto" id="toastTitle">Toast Title</strong>
+                <small id="toastSubtitle">Subtitle</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody">
+                Usuario Incorrecto revise los datos!
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+    <script src="js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+        const Default = {
+            scrollbarTheme: "os-theme-light",
+            scrollbarAutoHide: "leave",
+            scrollbarClickScroll: true,
+        };
+        document.addEventListener("DOMContentLoaded", function() {
+            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+            if (
+                sidebarWrapper &&
+                typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+            ) {
+                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                    scrollbars: {
+                        theme: Default.scrollbarTheme,
+                        autoHide: Default.scrollbarAutoHide,
+                        clickScroll: Default.scrollbarClickScroll,
+                    },
+                });
+            }
+        });
+
+        /*
+        * metodo para obtener los datos del formulario de Login y lanzar una llamada al backend para hacer el login y redireccionar a la pagina de inicio.
+        */
+        $(document).ready(function() {
+
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault(); // Evitar el envío normal del formulario
+        
+                // Obtener los valores de los campos
+                const user = $('#username').val();
+                const password = $('#password').val();
+                var hashedPassword = CryptoJS.SHA256(password).toString();
+
+                // Crear el objeto de datos a enviar
+                const data = { user: user, password: hashedPassword };
+
+                
+
+                // Mostrar el spinner y deshabilitar el botón
+                $('#loginButton').prop('disabled', true);
+                $('#loginButton .spinner-border').show();
+
+                // Hacer la llamada POST
+                fetch('https://bonareacdb.x10.mx/index.php/user/LoginUser', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Respuesta del servidor:', data);
+
+                    $('#loginButton .spinner-border').hide();
+                    $('#loginButton').prop('disabled', false);
+
+                    if(data.success == true){
+                        // Almacenar en localStorage la pass cifrada como token en el local storage.
+                        localStorage.setItem('hashedPassword', hashedPassword);
+                        localStorage.setItem('username', user);
+                        window.location.href ='/pages/index.html';
+                    }else{
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Usuario no encontrado en el sistema",
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+
+
+    </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
+</body><!--end::Body-->
+
+</html>
